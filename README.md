@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Biwy
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
@@ -25,3 +26,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+=======
+# BIWY
+>>>>>>> 7751a87a1bf988e4d0fe1f5382e39faeee42acf8
