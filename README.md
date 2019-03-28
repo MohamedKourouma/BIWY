@@ -67,6 +67,10 @@ Lancer un server dans le répertoire du projet:
 
 `npm start` 
 
+ou 
+
+`ng serve`
+
 Ouvrir l'application avec ce lien depuis un navigateur:
 
 `http://localhost:4200/`
