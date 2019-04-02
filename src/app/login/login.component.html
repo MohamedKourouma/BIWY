@@ -1,0 +1,66 @@
+<div class="align" id="logo-section">
+
+  <div class='site-logo'>
+    <a href='/home'><img src='logo.jpg' align='top'></a>
+  </div>
+  <div id="slogan">
+    <span class="site-description">BIWY, l'application qui vous facilite la gestion des pr&eacute;sences </span>
+  </div>
+</div>
+
+<mat-card class="cadre" style="text-align:center; font-family: Geneva, sans-serif; margin-top:5px; margin-bottom: 5px;" >
+
+  <mat-card-header>
+
+    <mat-card-title  style="text-align:center; font-family: Geneva, sans-serif; margin-top:5px; margin-bottom: 5px;" >Bienvenue sur BIWY !</mat-card-title>
+
+  </mat-card-header>
+
+  <mat-card-content >
+
+    <form class="align">
+
+      <table cellspacing="0" class="align">
+
+        <tr>
+
+          <td>
+
+            <mat-form-field>
+
+              <input matInput placeholder="Username" name="username" required>
+
+            </mat-form-field>
+
+          </td>
+
+        </tr>
+
+        <tr>
+
+          <td><mat-form-field class="example-full-width">
+
+            <input matInput placeholder="Password" type="password" name="password" required>
+
+          </mat-form-field></td>
+
+        </tr></table>
+
+    </form>
+
+  </mat-card-content>
+
+  <mat-card-actions>
+
+    <button mat-raised-button (click)="login()" color="primary">Login</button>
+
+  </mat-card-actions>
+
+  <div class="block-list">
+    Pour pouvoir acc&eacute;der &agrave; l'application, <br/>
+    vous devez saisir votre login et votre mot de passe.
+  </div>
+
+</mat-card>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,65 @@
+<mat-toolbar color="primary">
+  <span> BIWY</span>
+  <span class="spacer"></span>
+
+  <input class="cadre" placeholder="Search" type="search" style="font-family:Geneva, sans-serif; font-style: italic;">
+  <mat-icon>search</mat-icon>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="spacer"></span>
+
+  <button mat-button [matMenuTriggerFor]="checkpoint">Checkpoints</button>
+  <mat-menu #checkpoint="matMenu">
+    <button mat-menu-item>
+      <mat-icon>add</mat-icon>
+      <span>Ajouter</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>Modifier</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>delete</mat-icon>
+      <span>Supprimer</span>
+    </button>
+  </mat-menu>
+
+  <button mat-button [matMenuTriggerFor]="person">Personnes</button>
+  <mat-menu #person="matMenu">
+    <button mat-menu-item>
+      <mat-icon>person_add</mat-icon>
+      <span>Ajouter</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>Modifier</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>delete</mat-icon>
+      <span>Supprimer</span>
+    </button>
+  </mat-menu>
+
+  <span class="spacer"></span>
+
+  <button mat-button [matMenuTriggerFor]="user">Username</button>
+  <mat-menu #user="matMenu">
+    <button mat-menu-item>
+      <mat-icon>person</mat-icon>
+      <span>Profil</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>Param&egrave;tres</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>D&eacute;connexion</span>
+    </button>
+  </mat-menu>
+
+
+</mat-toolbar>
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,25 @@
+.block-list {
+	font-size: 12px;
+}
+
+.cadre {
+	margin: auto;
+	width: 40%;
+	padding: 1em;
+	border: 1px solid;
+	border-radius: 10px;
+}
+
+.align {
+    text-align:center;
+    font-family: Geneva, sans-serif;
+    margin-top:5px;
+    margin-bottom: 5px;
+}
+
+body {
+    text-align: center;
+}
+form {
+    display: inline-block;
+}
