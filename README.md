@@ -48,7 +48,11 @@ Modules complémentaires
 
 `npm install @angular/material @angular/cdk @angular/animations --save`
 
+`npm install --save angular/material2-builds angular/cdk-builds angular/animations-builds`
 
+`npm install material-design-icons`
+
+`ng add @angular/material`
 
 Vérifier les versions
 
