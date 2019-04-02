@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, OnInit } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatToolbarModule, MatButtonModule, MatMenuModule, MatIconModule, MatInputModule, MatTableModule, MatFormFieldModule,
-        MatCardModule} from '@angular/material';
+import {
+  MatToolbarModule, MatButtonModule, MatMenuModule,
+  MatIconModule, MatInputModule, MatTableModule,
+  MatFormFieldModule, MatCardModule, MatTabsModule
+} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +27,7 @@ import { PeopleComponent } from './home/people/people.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
@@ -33,8 +37,8 @@ import { PeopleComponent } from './home/people/people.component';
     MatTableModule,
     MatFormFieldModule,
     MatCardModule,
+    MatTabsModule,
     AppRoutingModule
-
   ],
   bootstrap: [AppComponent],
   providers: []

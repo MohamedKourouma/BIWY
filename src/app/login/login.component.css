@@ -23,3 +23,11 @@ body {
 form {
     display: inline-block;
 }
+
+.alert{
+  padding: 20px;
+  margin-top:5px;
+  margin-bottom: 5px;
+  text-align: center;
+  color: #f44336;;
+}

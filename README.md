@@ -42,6 +42,10 @@ Lancer l'invite de commande en mode Admin (Recherche: cmd > clic droit > Run as 
 
 Modules complémentaires
 
+`npm update` pour recupérer les modules en une fois
+
+ou
+
 `npm install -g express --save`
 
 `npm install -g typescript --save`
@@ -53,6 +57,8 @@ Modules complémentaires
 `npm install material-design-icons`
 
 `ng add @angular/material`
+
+`npm install angular-web-storage --save`
 
 Vérifier les versions
 

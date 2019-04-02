@@ -12,7 +12,7 @@ const routes: Routes = [
 { path: 'login', component: LoginComponent },
 { path: 'checkpoint', component: CheckpointComponent },
 { path: 'people', component: PeopleComponent },
-{ path: '', redirectTo: '/home', pathMatch: 'full' }
+{ path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({

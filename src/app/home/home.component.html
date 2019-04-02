@@ -8,8 +8,16 @@
   <!-- This fills the remaining space of the current row -->
   <span class="spacer"></span>
 
+
+
+  <span class="spacer"></span>
+
   <button mat-button [matMenuTriggerFor]="checkpoint">Checkpoints</button>
   <mat-menu #checkpoint="matMenu">
+    <button routerLink="/checkpoint" mat-menu-item>
+      <mat-icon>visibility</mat-icon>
+      <span>Consulter</span>
+    </button>
     <button mat-menu-item>
       <mat-icon>add</mat-icon>
       <span>Ajouter</span>
@@ -26,6 +34,10 @@
 
   <button mat-button [matMenuTriggerFor]="person">Personnes</button>
   <mat-menu #person="matMenu">
+    <button routerLink="/people" mat-menu-item>
+      <mat-icon>visibility</mat-icon>
+      <span>Consulter</span>
+    </button>
     <button mat-menu-item>
       <mat-icon>person_add</mat-icon>
       <span>Ajouter</span>
@@ -42,7 +54,7 @@
 
   <span class="spacer"></span>
 
-  <button mat-button [matMenuTriggerFor]="user">Username</button>
+  <button mat-button [matMenuTriggerFor]="user">Username <mat-icon>person_pin</mat-icon> </button>
   <mat-menu #user="matMenu">
     <button mat-menu-item>
       <mat-icon>person</mat-icon>
@@ -52,14 +64,24 @@
       <mat-icon>settings</mat-icon>
       <span>Param&egrave;tres</span>
     </button>
-    <button mat-menu-item>
+    <button mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>D&eacute;connexion</span>
     </button>
   </mat-menu>
 
-
 </mat-toolbar>
+
+<mat-tab-group (selectedIndexChange)="selectTab($event)">
+  <mat-tab label="Checkpoints">
+
+  </mat-tab>
+  <mat-tab label="Personnes">
+    <!-- <app-people *ngIf="selectedTab === 1"> </app-people>-->
+    <a routerLink="/people">
+    </a>
+  </mat-tab>
+</mat-tab-group>
 
 
 <router-outlet></router-outlet>
