@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
-import {MatTableDataSource} from '@angular/material';
+import {MatTableDataSource, MatPaginator} from '@angular/material';
 
-export interface PeriodicElement {
+export interface Checkpoint {
   name: string;
   position: number;
   weight: number;
   symbol: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: Checkpoint[] = [
   {position: 1, name: 'Batiment 1', weight: 1.0079, symbol: 'H'},
   {position: 2, name: 'A22 Salle 306', weight: 4.0026, symbol: 'He'},
   {position: 3, name: 'A12 Salle 1', weight: 6.941, symbol: 'Li'},
@@ -30,11 +30,14 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class CheckpointComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource<Checkpoint>(ELEMENT_DATA);
 
   constructor(public route: Router) { }
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   ngOnInit() {
+    console.log("Initialisation checkpoint ...");
+    this.dataSource.paginator = this.paginator;
   }
 
   applyFilter(filterValue: string) {

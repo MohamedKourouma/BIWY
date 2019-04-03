@@ -8,3 +8,7 @@ table {
   font-size: 14px;
   width: 100%;
 }
+
+.spacer .mat-card-title {
+  flex: 1 1 auto;
+}

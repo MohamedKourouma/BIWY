@@ -5,22 +5,30 @@ import { LocalStorageService } from 'angular-web-storage';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
 
-  selectedTab = 0;
+  navLinks = [
+    { path: '/checkpoint', label: 'Checkpoints' },
+    { path: '/people', label: 'Personnes' },
+  ];
+
+  links = [{ path: '/checkpoint', label: 'Checkpoints' },
+    { path: '/people', label: 'Personnes' },];
+  activeLink = this.links[0];
+  background = '';
 
   constructor(public route: Router, private local: LocalStorageService) {
     let currentUser = JSON.parse(local.get('currentUser'));
     if(!currentUser || currentUser.status != 'connected') {
       this.logout();
     }
-
   }
 
   ngOnInit() {
-        console.log("Initialisation home ...");
+    console.log("Initialisation home ...");
+
   }
 
 
@@ -29,8 +37,6 @@ export class HomeComponent implements OnInit {
     this.route.navigate(['/login']);
   }
 
-  selectTab(event) {
-    this.selectedTab = event;
-  }
+
 
 }

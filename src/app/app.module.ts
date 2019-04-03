@@ -6,7 +6,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatToolbarModule, MatButtonModule, MatMenuModule,
   MatIconModule, MatInputModule, MatTableModule,
-  MatFormFieldModule, MatCardModule, MatTabsModule
+  MatFormFieldModule, MatCardModule, MatTabsModule,
+  MatPaginatorModule, MatButtonToggleModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -38,7 +39,9 @@ import { PeopleComponent } from './home/people/people.component';
     MatFormFieldModule,
     MatCardModule,
     MatTabsModule,
-    AppRoutingModule
+    MatPaginatorModule,
+    AppRoutingModule,
+    MatButtonToggleModule
   ],
   bootstrap: [AppComponent],
   providers: []

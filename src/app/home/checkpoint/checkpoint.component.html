@@ -6,14 +6,20 @@
 
     <mat-card-title>
       Gestion des checkpoints
-    </mat-card-title>
 
-    <mat-card-content>
 
-      <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-      </mat-form-field>
+      <span class="spacer"></span>
+      <button mat-fab color="primary" style="float: right">
+        <mat-icon>add</mat-icon>
+      </button>
 
+      </mat-card-title>
+
+      <mat-card-content>
+
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!-- Position Column -->
@@ -43,10 +49,12 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
-
+        <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
 
     </mat-card-content>
 
   </mat-card>
 
 </div>
+
+<router-outlet></router-outlet>

@@ -6,13 +6,10 @@
   <mat-icon>search</mat-icon>
 
   <!-- This fills the remaining space of the current row -->
-  <span class="spacer"></span>
-
 
 
   <span class="spacer"></span>
-
-  <button mat-button [matMenuTriggerFor]="checkpoint">Checkpoints</button>
+  <!--<button mat-button [matMenuTriggerFor]="checkpoint">Checkpoints</button>
   <mat-menu #checkpoint="matMenu">
     <button routerLink="/checkpoint" mat-menu-item>
       <mat-icon>visibility</mat-icon>
@@ -50,7 +47,7 @@
       <mat-icon>delete</mat-icon>
       <span>Supprimer</span>
     </button>
-  </mat-menu>
+  </mat-menu>-->
 
   <span class="spacer"></span>
 
@@ -72,16 +69,24 @@
 
 </mat-toolbar>
 
-<mat-tab-group (selectedIndexChange)="selectTab($event)">
-  <mat-tab label="Checkpoints">
 
-  </mat-tab>
-  <mat-tab label="Personnes">
-    <!-- <app-people *ngIf="selectedTab === 1"> </app-people>-->
-    <a routerLink="/people">
-    </a>
-  </mat-tab>
-</mat-tab-group>
+
+<nav mat-tab-nav-bar>
+  <a mat-tab-link
+     routerLink="/checkpoint"
+     routerLinkActive #rlaCP="routerLinkActive"
+     [routerLinkActiveOptions]="{exact:true}"
+     [active]="rlaCP.isActive">
+    Checkpoints
+  </a>
+  <a mat-tab-link
+     routerLink="/people"
+     routerLinkActive #rlaP="routerLinkActive"
+     [routerLinkActiveOptions]="{exact:true}"
+     [active]="rlaP.isActive">
+    Personnes
+  </a>
+</nav>
 
 
 <router-outlet></router-outlet>
