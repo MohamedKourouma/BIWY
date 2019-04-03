@@ -1,27 +1,40 @@
-.block-list {
-	font-size: 12px;
+body {
+    text-align: center;
+}
+#Logo{
+    width:150px;
+    height:150px;
+}
+.site-logo{
+    padding-top:3%;
+}
+#Titre{
+    margin:0;
+    
+}
+form {
+    display: inline-block;
 }
 
+#Inscription{
+    text-align:center;
+    font-family: Geneva, sans-serif;
+    margin-top:5%;
+}
 .cadre {
 	margin: auto;
 	width: 40%;
 	padding: 1em;
 	border: 1px solid;
 	border-radius: 10px;
+    min-width: 200px;
 }
 
 .align {
     text-align:center;
     font-family: Geneva, sans-serif;
-    margin-top:5px;
-    margin-bottom: 5px;
-}
-
-body {
-    text-align: center;
-}
-form {
-    display: inline-block;
+    padding-top:5px;
+    padding-bottom: 5px;
 }
 
 .alert{
@@ -30,4 +43,8 @@ form {
   margin-bottom: 5px;
   text-align: center;
   color: #f44336;;
+}
+
+.block-list {
+	font-size: 12px;
 }
