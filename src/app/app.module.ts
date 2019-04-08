@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CheckpointComponent } from './home/checkpoint/checkpoint.component';
 import { PeopleComponent } from './home/people/people.component';
+import { AddPeopleComponent } from './home/people/add-people/add-people.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { PeopleComponent } from './home/people/people.component';
     HomeComponent,
     LoginComponent,
     CheckpointComponent,
-    PeopleComponent
+    PeopleComponent,
+    AddPeopleComponent
   ],
   imports: [
     BrowserModule,
