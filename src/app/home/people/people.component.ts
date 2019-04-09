@@ -1,6 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, Inject} from '@angular/core';
 import { Router } from '@angular/router';
-import {MatTableDataSource, MatPaginator} from '@angular/material';
+import {MatTableDataSource, MatPaginator, MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { AddPeopleComponent } from './add-people/add-people.component';
 
 export interface Person {
   position: number;
@@ -33,7 +34,7 @@ export class PeopleComponent implements OnInit {
   displayedColumns: string[] = ['position', 'firstname', 'lastname', 'phone', 'email'];
   dataSource = new MatTableDataSource<Person>(ELEMENT_DATA);
 
-  constructor(public route: Router) { }
+  constructor(public route: Router, public dialog: MatDialog) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   ngOnInit() {
@@ -45,5 +46,15 @@ export class PeopleComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  
+  openDialogAddPeople(): void {
+    const dialogRef = this.dialog.open(AddPeopleComponent, {
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 
 }

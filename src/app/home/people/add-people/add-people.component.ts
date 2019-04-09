@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-people',
@@ -8,9 +9,30 @@ import { Router } from '@angular/router';
 })
 export class AddPeopleComponent implements OnInit {
 
-  constructor(public route: Router) { }
+  constructor(public dialogRef: MatDialogRef<AddPeopleComponent>) {}
+
+  
+  email = new FormControl('', [Validators.required, Validators.email]);
+  phone = new FormControl('', [Validators.required]);
+  firstName = new FormControl('', [Validators.required]);
+  lastName = new FormControl('', [Validators.required]);
+
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'You must enter a value' :
+        this.email.hasError('email') ? 'Not a valid email' :
+            '';
+  }
+  getRequiredMessage(){
+    return 'You must enter a value';
+  }
 
   ngOnInit() {
   }
+  
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 
 }

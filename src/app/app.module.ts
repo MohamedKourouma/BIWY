@@ -1,13 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatToolbarModule, MatButtonModule, MatMenuModule,
   MatIconModule, MatInputModule, MatTableModule,
   MatFormFieldModule, MatCardModule, MatTabsModule,
-  MatPaginatorModule, MatButtonToggleModule
+  MatPaginatorModule, MatButtonToggleModule, 
+  MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,9 +32,11 @@ import { AddPeopleComponent } from './home/people/add-people/add-people.componen
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatDialogModule,
     MatMenuModule,
     MatIconModule,
     MatInputModule,
@@ -43,9 +46,12 @@ import { AddPeopleComponent } from './home/people/add-people/add-people.componen
     MatTabsModule,
     MatPaginatorModule,
     AppRoutingModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
   ],
-  bootstrap: [AppComponent],
-  providers: []
+  bootstrap: [AppComponent, PeopleComponent],
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ],
+  entryComponents: [PeopleComponent, AddPeopleComponent]  
 })
 export class AppModule { }

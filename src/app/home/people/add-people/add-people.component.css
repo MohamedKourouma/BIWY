@@ -1,0 +1,4 @@
+#FormAddPeople{
+    display:flex;
+    flex-direction: column;
+}
