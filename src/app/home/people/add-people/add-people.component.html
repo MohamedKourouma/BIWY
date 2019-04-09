@@ -23,7 +23,7 @@
     <input matInput placeholder="Phone" [formControl]="phone" required>
     <mat-icon matSuffix>phone</mat-icon>
     <mat-error *ngIf="phone.invalid">{{getRequiredMessage()}}</mat-error>
-  </mat-form-field>
+  </mat-form-field>  
 </form>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Cancel</button>

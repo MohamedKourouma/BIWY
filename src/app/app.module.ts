@@ -48,9 +48,9 @@ import { AddPeopleComponent } from './home/people/add-people/add-people.componen
     AppRoutingModule,
     MatButtonToggleModule,
   ],
-  bootstrap: [AppComponent, PeopleComponent],
+  bootstrap: [AppComponent],
   providers: [
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}
   ],
   entryComponents: [PeopleComponent, AddPeopleComponent]  
 })
