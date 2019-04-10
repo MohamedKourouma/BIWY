@@ -33,6 +33,14 @@ export class AddPeopleComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
+  addPeopleInput(){
+      if(this.email.hasError('required') || this.phone.hasError('required') || this.firstName.hasError('required') || this.lastName.hasError('required')){
+        
+      }
+      else {
+
+      }
+  }
 
 
 }
