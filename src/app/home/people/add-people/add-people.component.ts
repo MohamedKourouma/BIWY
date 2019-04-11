@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { FormControl, Validators } from '@angular/forms';
+import {MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import {FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-people',
@@ -8,17 +8,23 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./add-people.component.css']
 })
 export class AddPeopleComponent implements OnInit {
+  
+  messageSnackBar: string;
+  actionSnackBar: string;
+  FormPersonName: FormGroup;
+  FormPersonContact: FormGroup;
+  FormPicture: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<AddPeopleComponent>) {}
+  constructor(private _formBuilder: FormBuilder, public dialogRef: MatDialogRef<AddPeopleComponent>, private snackBar: MatSnackBar) {}
 
   
-  email = new FormControl('', [Validators.required, Validators.email]);
-  phone = new FormControl('', [Validators.required]);
   firstName = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
+  email = new FormControl('', [Validators.required, Validators.email]);
+  phone = new FormControl('', [Validators.required]);
 
   getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
+    return this.email.hasError('required') ? 'You must enter a value test' :
         this.email.hasError('email') ? 'Not a valid email' :
             '';
   }
@@ -27,19 +33,33 @@ export class AddPeopleComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.FormPersonName = this._formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required]
+    });
+    this.FormPersonContact = this._formBuilder.group({
+      email: ['', Validators.email],
+      phone: ['', Validators.required]
+    });
+    this.FormPicture = this._formBuilder.group({
+      picture: ['', Validators.required]
+    });
   }
   
-
   onNoClick(): void {
     this.dialogRef.close();
   }
   addPeopleInput(){
-      if(this.email.hasError('required') || this.phone.hasError('required') || this.firstName.hasError('required') || this.lastName.hasError('required')){
+      this.messageSnackBar = "Access to the database";
+      this.actionSnackBar ="Close";
         
-      }
-      else {
-
-      }
+      this.openSnackBar(this.messageSnackBar, this.actionSnackBar)
+  }
+  
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
 

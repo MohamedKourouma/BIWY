@@ -8,7 +8,7 @@ import {
   MatIconModule, MatInputModule, MatTableModule,
   MatFormFieldModule, MatCardModule, MatTabsModule,
   MatPaginatorModule, MatButtonToggleModule, 
-  MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS
+  MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS, MatSnackBarModule, MatStepperModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,7 +27,7 @@ import { AddPeopleComponent } from './home/people/add-people/add-people.componen
     LoginComponent,
     CheckpointComponent,
     PeopleComponent,
-    AddPeopleComponent
+    AddPeopleComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +47,8 @@ import { AddPeopleComponent } from './home/people/add-people/add-people.componen
     MatPaginatorModule,
     AppRoutingModule,
     MatButtonToggleModule,
+    MatSnackBarModule,
+    MatStepperModule
   ],
   bootstrap: [AppComponent],
   providers: [

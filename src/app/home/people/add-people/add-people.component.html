@@ -1,33 +1,54 @@
-<h1 mat-dialog-title>Add a person </h1>
-<form id="FormAddPeople" mat-dialog-content>
-  <mat-form-field appearance="outline">
-    <mat-label>First Name</mat-label>
-    <input matInput placeholder="First Name" [formControl]="firstName" required>
-    <mat-icon matSuffix>person</mat-icon>
-    <mat-error *ngIf="firstName.invalid">{{getRequiredMessage()}}</mat-error>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Last Name</mat-label>
-    <input matInput placeholder="Last Name" [formControl]="lastName" required>
-    <mat-icon matSuffix>person</mat-icon>
-    <mat-error *ngIf="lastName.invalid">{{getRequiredMessage()}}</mat-error>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Mail</mat-label>
-    <input matInput placeholder="Mail" [formControl]="email" required>
-    <mat-icon matSuffix>email</mat-icon>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Phone</mat-label>
-    <input matInput placeholder="Phone" [formControl]="phone" required>
-    <mat-icon matSuffix>phone</mat-icon>
-    <mat-error *ngIf="phone.invalid">{{getRequiredMessage()}}</mat-error>
-  </mat-form-field>  
-</form>
-<div mat-dialog-actions>
-  <button id="Cancel" mat-button (click)="onNoClick()">Cancel</button>
-  <button id="AddPeople" mat-button cdkFocusInitial>Add
-    <mat-icon matSuffix>person_add</mat-icon>
-  </button>
+<div id="PersonTop">
+  <h1 mat-dialog-title>Add a person </h1>
+  <button mat-button (click)="onNoClick()">&#10005;</button>
 </div>
+  <mat-vertical-stepper linear #stepper>
+    <mat-step [stepControl]="FormPersonName">
+      <form id="PersonInfo" [formGroup]="FormPersonName">
+        <ng-template matStepLabel>Name</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First Name" formControlName="firstName" required>
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-error *ngIf="firstName.invalid">{{getRequiredMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name" formControlName="lastName" required>
+          <mat-icon matSuffix>person</mat-icon>
+          <mat-error *ngIf="lastName.invalid">{{getRequiredMessage()}}</mat-error>
+        </mat-form-field>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="FormPersonContact">
+      <form id="PersonContact" [formGroup]="FormPersonContact">
+        <ng-template matStepLabel>Contact</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>Mail</mat-label>
+          <input matInput placeholder="Mail" required formControlName="email">
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput placeholder="Phone" required formControlName="phone">
+          <mat-icon matSuffix>phone</mat-icon>
+          <mat-error *ngIf="phone.invalid">{{getRequiredMessage()}}</mat-error>
+        </mat-form-field>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="FormPicture">
+      <form [formGroup]="FormPicture">
+        <ng-template matStepLabel>Picture</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="picture" required>
+        </mat-form-field>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+        <button id="AddPeople" mat-button cdkFocusInitial (click)="addPeopleInput()">Add
+          <mat-icon matSuffix>person_add</mat-icon>
+        </button>
+    </mat-step>
+  </mat-vertical-stepper>
