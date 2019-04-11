@@ -56,5 +56,4 @@ export class PeopleComponent implements OnInit {
             console.log('The dialog was closed');
         });
     }
-
 }

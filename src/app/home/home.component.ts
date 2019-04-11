@@ -10,14 +10,7 @@ import { LocalStorageService } from 'angular-web-storage';
 
 export class HomeComponent implements OnInit {
 
-    constructor(public route: Router, private local: LocalStorageService) {
-        /*
-        const currentUser = JSON.parse(local.get('currentUser'));
-        if (!currentUser || currentUser.status !== 'connected') {
-            this.logout();
-        }
-        */
-    }
+    constructor(public route: Router, private local: LocalStorageService) { }
 
     ngOnInit() {
         console.log("Initialisation home ...");

@@ -9,10 +9,12 @@ import { LocalStorageService } from 'angular-web-storage';
 })
 
 export class LoginComponent implements OnInit {
+
     username: string;
     pwd: string;
     status = 'not connected';
     error = '';
+
     constructor(public route: Router, private local: LocalStorageService) {
         let user = JSON.parse(local.get('currentUser'));
         this.status = user && user.status;

@@ -4,11 +4,11 @@ import { LocalStorageService } from 'angular-web-storage';
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    templateUrl: './app.component.html'
 })
 
 export class AppComponent {
+
     title = 'Biwy';
 
     constructor(public router: Router, private local: LocalStorageService) {

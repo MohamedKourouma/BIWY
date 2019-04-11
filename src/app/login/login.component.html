@@ -1,64 +1,40 @@
 <div class="align" id="logo-section">
-
     <div class='site-logo mt-5'>
-        <a href='/home'><img id="Logo" src='../../assets/logo.png' align='top'></a>
+        <a href='/home'><img id="Logo" src='../../assets/logo.png'></a>
     </div>
     <div id="Slogan">
         <span class="site-description">To facilitate presence management</span>
     </div>
 </div>
 
-
 <mat-card id="Inscription" class="cadre">
-
     <h2> Bienvenue sur BIWY ! </h2>
-
     <mat-card-content>
-
         <form class="align">
-
             <table cellspacing="0" class="align">
-
                 <tr>
-
                     <td>
-
                         <mat-form-field>
-
                             <input matInput placeholder="Username" name="username" [(ngModel)]="username" required>
-
                         </mat-form-field>
-
                     </td>
-
                 </tr>
-
                 <tr>
-
                     <td>
                         <mat-form-field class="example-full-width">
-
-                            <input matInput placeholder="Password" type="password" name="pwd" [(ngModel)]="pwd"
-                                required>
-
+                            <input matInput placeholder="Password" type="password" name="pwd" [(ngModel)]="pwd" required>
                         </mat-form-field>
                     </td>
-
                 </tr>
             </table>
-
         </form>
-
     </mat-card-content>
 
     <div *ngIf="error" class="alert"> {{error}}</div>
 
     <mat-card-actions>
-
         <button mat-raised-button (click)="login()" color="primary">Login</button>
-
     </mat-card-actions>
-
 
     <div class="block-list">
         Pour pouvoir acc&eacute;der &agrave; l'application, <br />
@@ -66,5 +42,3 @@
     </div>
 
 </mat-card>
-
-<router-outlet></router-outlet>
