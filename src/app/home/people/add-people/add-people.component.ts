@@ -25,7 +25,7 @@ export class AddPeopleComponent implements OnInit {
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'You must enter a value test' :
-        this.email.hasError('email') ? 'Not a valid email' :
+        this.email.hasError('email') ? 'You must enter a valid email' :
             '';
   }
   getRequiredMessage(){
