@@ -1,65 +1,69 @@
 <div class="align" id="logo-section">
 
-  <div class='site-logo mt-5'>
-    <a href='/home'><img id="Logo"src='../../assets/logo.png' align='top'></a>
-  </div>
-  <div id="Slogan">
-    <span class="site-description">To facilitate presence management</span>
-  </div>
+    <div class='site-logo mt-5'>
+        <a href='/home'><img id="Logo" src='../../assets/logo.png' align='top'></a>
+    </div>
+    <div id="Slogan">
+        <span class="site-description">To facilitate presence management</span>
+    </div>
 </div>
 
 
 <mat-card id="Inscription" class="cadre">
 
-  <h2> Bienvenue sur BIWY ! </h2>
+    <h2> Bienvenue sur BIWY ! </h2>
 
-  <mat-card-content >
+    <mat-card-content>
 
-    <form class="align">
+        <form class="align">
 
-      <table cellspacing="0" class="align">
+            <table cellspacing="0" class="align">
 
-        <tr>
+                <tr>
 
-          <td>
+                    <td>
 
-            <mat-form-field>
+                        <mat-form-field>
 
-              <input matInput placeholder="Username" name="username" [(ngModel)]="username" required>
+                            <input matInput placeholder="Username" name="username" [(ngModel)]="username" required>
 
-            </mat-form-field>
+                        </mat-form-field>
 
-          </td>
+                    </td>
 
-        </tr>
+                </tr>
 
-        <tr>
+                <tr>
 
-          <td><mat-form-field class="example-full-width">
+                    <td>
+                        <mat-form-field class="example-full-width">
 
-            <input matInput placeholder="Password" type="password" name="pwd" [(ngModel)]="pwd" required>
+                            <input matInput placeholder="Password" type="password" name="pwd" [(ngModel)]="pwd"
+                                required>
 
-          </mat-form-field></td>
+                        </mat-form-field>
+                    </td>
 
-        </tr></table>
+                </tr>
+            </table>
 
-    </form>
+        </form>
 
-  </mat-card-content>
+    </mat-card-content>
 
-  <div *ngIf="error" class="alert"> {{error}}</div>
+    <div *ngIf="error" class="alert"> {{error}}</div>
 
-  <mat-card-actions>
+    <mat-card-actions>
 
-    <button mat-raised-button (click)="login()" color="primary">Login</button>
+        <button mat-raised-button (click)="login()" color="primary">Login</button>
 
-  </mat-card-actions>
+    </mat-card-actions>
 
 
-  <div class="block-list">
-    Pour pouvoir acc&eacute;der &agrave; l'application, <br/>
-    vous devez saisir votre login et votre mot de passe.
-  </div>
+    <div class="block-list">
+        Pour pouvoir acc&eacute;der &agrave; l'application, <br />
+        vous devez saisir votre login et votre mot de passe.
+    </div>
 
 </mat-card>
 

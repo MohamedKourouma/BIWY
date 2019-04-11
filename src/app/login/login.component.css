@@ -1,17 +1,21 @@
 body {
     text-align: center;
 }
+
 #Logo{
     width:150px;
     height:150px;
 }
+
 .site-logo{
     padding-top:3%;
 }
+
 #Titre{
     margin:0;
     
 }
+
 form {
     display: inline-block;
 }

@@ -1,66 +1,63 @@
-<app-home> </app-home>
-
 <div class="table">
 
-  <mat-card style="margin: 1%;">
+    <mat-card style="margin: 1%;">
 
-    <mat-card-title>
-      Gestion des personnes
+        <mat-card-title>
+            Gestion des personnes
 
 
-      <span class="spacer"></span>
-      <button mat-fab (click)="openDialogAddPeople()"
-      color="primary" style="float: right">
-        <mat-icon>add</mat-icon>
-      </button>
+            <span class="spacer"></span>
+            <button mat-fab (click)="openDialogAddPeople()" color="primary" style="float: right">
+                <mat-icon>add</mat-icon>
+            </button>
 
-    </mat-card-title>
+        </mat-card-title>
 
-    <mat-card-content>
+        <mat-card-content>
 
-      <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-      </mat-form-field>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-        </ng-container>
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                </ng-container>
 
-        <!-- Firstame Column -->
-        <ng-container matColumnDef="firstname">
-          <th mat-header-cell *matHeaderCellDef> Prénom </th>
-          <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
-        </ng-container>
+                <!-- Firstame Column -->
+                <ng-container matColumnDef="firstname">
+                    <th mat-header-cell *matHeaderCellDef> Prénom </th>
+                    <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+                </ng-container>
 
-        <!-- Lastname Column -->
-        <ng-container matColumnDef="lastname">
-          <th mat-header-cell *matHeaderCellDef> Nom </th>
-          <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
-        </ng-container>
+                <!-- Lastname Column -->
+                <ng-container matColumnDef="lastname">
+                    <th mat-header-cell *matHeaderCellDef> Nom </th>
+                    <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+                </ng-container>
 
-        <!-- Phone Column -->
-        <ng-container matColumnDef="phone">
-          <th mat-header-cell *matHeaderCellDef> Téléphone </th>
-          <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
-        </ng-container>
+                <!-- Phone Column -->
+                <ng-container matColumnDef="phone">
+                    <th mat-header-cell *matHeaderCellDef> Téléphone </th>
+                    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                </ng-container>
 
-        <!-- Email Column -->
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef> Email </th>
-          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-        </ng-container>
+                <!-- Email Column -->
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-      <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
 
-    </mat-card-content>
+        </mat-card-content>
 
-  </mat-card>
+    </mat-card>
 
 </div>
 
