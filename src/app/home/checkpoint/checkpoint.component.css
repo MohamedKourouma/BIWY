@@ -1,14 +1,13 @@
 /* Structure */
 table {
-  width: 80%;
-
+    width: 80%;
 }
 
 .mat-form-field {
-  font-size: 14px;
-  width: 100%;
+    font-size: 14px;
+    width: 100%;
 }
 
 .spacer .mat-card-title {
-  flex: 1 1 auto;
+    flex: 1 1 auto;
 }

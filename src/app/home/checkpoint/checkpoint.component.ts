@@ -2,36 +2,37 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import {MatTableDataSource, MatPaginator} from '@angular/material';
 import { HttpClient } from '@angular/common/http';
+import {Checkpoint, CPResult} from "../../../models/Checkpoint";
 
-export interface Checkpoint {
-  checkpoint_id: number;
-  checkpoint_description: string;
-  checkpoint_start_date: string;
-  checkpoint_end_date: string;
-}
-
-const CP_DATA: Checkpoint[] = [];
+const baseUrl: string = '/api/checkpoints';
 
 @Component({
-  selector: 'app-checkpoint',
-  templateUrl: './checkpoint.component.html',
-  styleUrls: ['./checkpoint.component.css']
+    selector: 'app-checkpoint',
+    templateUrl: './checkpoint.component.html',
+    styleUrls: ['./checkpoint.component.css']
 })
 export class CheckpointComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'descript', 'start', 'end'];
-  dataSource = new MatTableDataSource<Checkpoint>(CP_DATA);
+  dataSource = new MatTableDataSource();
 
   constructor(public route: Router, private httpClient: HttpClient) { }
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  ngOnInit() {
-    console.log("Initialisation checkpoint ...");
-    this.dataSource.paginator = this.paginator;
-  }
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    ngOnInit() {
+        console.log("Initialisation checkpoint ...");
+        this.dataSource.paginator = this.paginator;
 
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+        this.httpClient
+          .get<CPResult>(baseUrl)
+          .subscribe(res => {
+            console.log(res);
 
+            this.dataSource = new MatTableDataSource<Checkpoint>(res.data);
+          });
+    }
+
+    applyFilter(filterValue: string) {
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    }
 }

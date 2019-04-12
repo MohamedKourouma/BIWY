@@ -2,22 +2,28 @@
     display:flex;
     flex-direction: column;
 }
+
 #Done, #PersonTop{
     display:flex;
     justify-content:space-between;
 }
+
 #PersonTop button{
     font-size: 2rem;
 }
+
 #Cancel{
     background-color: rgba(181, 59, 59, 0.7)
 }
+
 #Cancel:hover{
     background-color: rgba(181, 59, 59, 1)
 }
+
 #AddPeople{
     background-color: rgba(41, 156, 3, 0.7)
 }
+
 #AddPeople:hover{
     background-color: rgba(41, 156, 3, 1)
 }

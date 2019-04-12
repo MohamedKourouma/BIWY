@@ -1,95 +1,49 @@
 <mat-toolbar color="primary">
-  <div class='site-logo mt-5'>
-  <a href='/home'> <img id="Logo" src='../../assets/home_logo.png' style="width:80%"/></a>
-  </div>
 
-  <span class="spacer"></span>
+    <div class='site-logo mt-5'>
+        <a href='/home'> <img id="Logo" src='../../assets/home_logo.png' style="width:80%" /></a>
+    </div>
 
-  <input class="cadre" placeholder="Search" type="search" style="font-family:Geneva, sans-serif; font-style: italic;">
-  <mat-icon>search</mat-icon>
+    <span class="spacer"></span>
 
-  <!-- This fills the remaining space of the current row -->
+    <input class="cadre" placeholder="Search" type="search" style="font-family:Geneva, sans-serif; font-style: italic;">
+    <mat-icon>search</mat-icon>
 
+    <span class="spacer"></span>
+    <span class="spacer"></span>
 
-  <span class="spacer"></span>
-  <!--<button mat-button [matMenuTriggerFor]="checkpoint">Checkpoints</button>
-  <mat-menu #checkpoint="matMenu">
-    <button routerLink="/checkpoint" mat-menu-item>
-      <mat-icon>visibility</mat-icon>
-      <span>Consulter</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>add</mat-icon>
-      <span>Ajouter</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>edit</mat-icon>
-      <span>Modifier</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>delete</mat-icon>
-      <span>Supprimer</span>
-    </button>
-  </mat-menu>
-
-  <button mat-button [matMenuTriggerFor]="person">Personnes</button>
-  <mat-menu #person="matMenu">
-    <button routerLink="/people" mat-menu-item>
-      <mat-icon>visibility</mat-icon>
-      <span>Consulter</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>person_add</mat-icon>
-      <span>Ajouter</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>edit</mat-icon>
-      <span>Modifier</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>delete</mat-icon>
-      <span>Supprimer</span>
-    </button>
-  </mat-menu>-->
-
-  <span class="spacer"></span>
-
-  <button mat-button [matMenuTriggerFor]="user">Username <mat-icon>person_pin</mat-icon> </button>
-  <mat-menu #user="matMenu">
-    <button mat-menu-item>
-      <mat-icon>person</mat-icon>
-      <span>Profil</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>settings</mat-icon>
-      <span>Param&egrave;tres</span>
-    </button>
-    <button mat-menu-item (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      <span>D&eacute;connexion</span>
-    </button>
-  </mat-menu>
+    <button mat-button [matMenuTriggerFor]="user">Username <mat-icon>person_pin</mat-icon> </button>
+    <mat-menu #user="matMenu">
+        <button mat-menu-item>
+            <mat-icon>person</mat-icon>
+            <span>Profil</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Param&egrave;tres</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>D&eacute;connexion</span>
+        </button>
+    </mat-menu>
 
 </mat-toolbar>
 
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened class="sidenav">
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="['/home', {outlets: {'sidenav': ['checkpoint']}}]">
+                <h3>Checkpoints</h3>
+            </a>
+            <a mat-list-item [routerLink]="['/home', {outlets: {'sidenav': ['person']}}]">
+                <h3>Personnes</h3>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet name='sidenav'></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
 
-
-<nav mat-tab-nav-bar>
-  <a mat-tab-link
-     routerLink="/checkpoint"
-     routerLinkActive #rlaCP="routerLinkActive"
-     [routerLinkActiveOptions]="{exact:true}"
-     [active]="rlaCP.isActive">
-    Checkpoints
-  </a>
-  <a mat-tab-link
-     routerLink="/people"
-     routerLinkActive #rlaP="routerLinkActive"
-     [routerLinkActiveOptions]="{exact:true}"
-     [active]="rlaP.isActive">
-    Personnes
-  </a>
-</nav>
-
-
-<router-outlet></router-outlet>
+<mat-toolbar class="footer">Footer</mat-toolbar>
