@@ -29,7 +29,10 @@ export class CheckpointComponent implements OnInit {
             console.log(res);
 
             this.dataSource = new MatTableDataSource<Checkpoint>(res.data);
-          });
+          },
+            error => {
+              console.log('Checkpoints loading failed');
+            });
     }
 
     applyFilter(filterValue: string) {

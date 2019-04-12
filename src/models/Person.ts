@@ -16,3 +16,10 @@ export interface PersonResult {
   data: Person[],
   message: string
 }
+
+export interface Person_add_edit{
+  "person_first_name": string,
+  "person_last_name": string,
+  "person_mail": string,
+  "person_phone": string
+}

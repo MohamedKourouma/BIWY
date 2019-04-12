@@ -28,9 +28,11 @@ export class PeopleComponent implements OnInit {
         .get<PersonResult>(baseUrl)
         .subscribe(res => {
           console.log(res);
-
           this.dataSource = new MatTableDataSource<Person>(res.data);
-        });
+        },
+          error => {
+            console.log('Persons loading failed');
+          });
     }
 
     applyFilter(filterValue: string) {
