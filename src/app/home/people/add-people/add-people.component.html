@@ -25,13 +25,13 @@
             <ng-template matStepLabel>Contact</ng-template>
             <mat-form-field appearance="outline">
                 <mat-label>Mail</mat-label>
-                <input matInput placeholder="Mail" required formControlName="email">
+                <input matInput placeholder="Mail" formControlName="email" required>
                 <mat-icon matSuffix>email</mat-icon>
                 <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline">
                 <mat-label>Phone</mat-label>
-                <input matInput placeholder="Phone" required formControlName="phone">
+                <input matInput placeholder="Phone" formControlName="phone" required>
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-error *ngIf="phone.invalid">{{getRequiredMessage()}}</mat-error>
             </mat-form-field>
@@ -47,7 +47,8 @@
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
-        <button id="AddPeople" mat-button cdkFocusInitial (click)="addPeopleInput()">Add
+        <button id="AddPeople" mat-button (click)="submitPerson()" cdkFocusInitial>
+            Add
             <mat-icon matSuffix>person_add</mat-icon>
         </button>
     </mat-step>
