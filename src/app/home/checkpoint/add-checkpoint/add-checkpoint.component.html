@@ -1,0 +1,40 @@
+<div id="PersonTop">
+    <h1 mat-dialog-title>Add a checkpoint </h1>
+    <button mat-button (click)="onNoClick()">&#10005;</button>
+</div>
+<mat-vertical-stepper linear #stepper>
+    <mat-step [stepControl]="FormPersonName">
+        <form id="PersonInfo" [formGroup]="FormPersonName">
+            <ng-template matStepLabel>Description</ng-template>
+            <mat-form-field appearance="outline">
+                <mat-label>Description</mat-label>
+                <input matInput placeholder="Description" formControlName="description" required>
+                <mat-icon matSuffix>description</mat-icon>
+                <mat-error *ngIf="description.invalid">{{getRequiredMessage()}}</mat-error>
+            </mat-form-field>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="FormPersonContact">
+      <form id="PersonContact" [formGroup]="FormPersonContact">
+        <ng-template matStepLabel>Start/End Date</ng-template>
+        <mat-form-field appearance="outline">
+          <mat-label>Start Date</mat-label>
+          <input matInput type="datetime-local" placeholder="Start Date" formControlName="sdate" required>
+          <mat-icon matSuffix>calendar_today</mat-icon>
+          <mat-error *ngIf="sdate.invalid">{{getRequiredMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>End Date</mat-label>
+          <input matInput type="datetime-local" placeholder="Start Date" formControlName="edate" required>
+          <mat-icon matSuffix>calendar_today</mat-icon>
+          <mat-error *ngIf="edate.invalid">{{getRequiredMessage()}}</mat-error>
+        </mat-form-field>
+      </form>
+    </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <button id="AddCheckpoint" mat-button (click)="submitCheckpoint()" cdkFocusInitial>Add
+      <mat-icon matSuffix>beenhere</mat-icon>
+    </button>
+  </mat-step>
+</mat-vertical-stepper>
