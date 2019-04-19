@@ -1,10 +1,10 @@
-<div id="PersonTop">
+<div id="CPTop">
     <h1 mat-dialog-title>Add a checkpoint </h1>
     <button mat-button (click)="onNoClick()">&#10005;</button>
 </div>
 <mat-vertical-stepper linear #stepper>
-    <mat-step [stepControl]="FormPersonName">
-        <form id="PersonInfo" [formGroup]="FormPersonName">
+    <mat-step [stepControl]="FormCheckpointDescription">
+        <form id="CPInfo" [formGroup]="FormCheckpointDescription">
             <ng-template matStepLabel>Description</ng-template>
             <mat-form-field appearance="outline">
                 <mat-label>Description</mat-label>
@@ -14,8 +14,8 @@
             </mat-form-field>
         </form>
     </mat-step>
-    <mat-step [stepControl]="FormPersonContact">
-      <form id="PersonContact" [formGroup]="FormPersonContact">
+    <mat-step [stepControl]="FormCheckpointDate">
+      <form id="CPDate" [formGroup]="FormCheckpointDate">
         <ng-template matStepLabel>Start/End Date</ng-template>
         <mat-form-field appearance="outline">
           <mat-label>Start Date</mat-label>
@@ -25,7 +25,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>End Date</mat-label>
-          <input matInput type="datetime-local" placeholder="Start Date" formControlName="edate" required>
+          <input matInput type="datetime-local" placeholder="End Date" formControlName="edate" required>
           <mat-icon matSuffix>calendar_today</mat-icon>
           <mat-error *ngIf="edate.invalid">{{getRequiredMessage()}}</mat-error>
         </mat-form-field>

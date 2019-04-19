@@ -59,7 +59,7 @@ export class PeopleComponent implements OnInit {
     }
 
     refresh() {
-        this.dataService.getLatest().subscribe(result => {
+        this.dataService.getLatestPerson().subscribe(result => {
             if (result.status === 'not_modified' || result.status === 'success') {
                 // @ts-ignore
               this.dataSource.data.push(result.data);

@@ -1,14 +1,14 @@
-#PersonInfo, #PersonContact{
+#CPInfo, #CPDate{
     display:flex;
     flex-direction: column;
 }
 
-#Done, #PersonTop{
+#Done, #CPTop{
     display:flex;
     justify-content:space-between;
 }
 
-#PersonTop button{
+#CPTop button{
     font-size: 2rem;
 }
 
@@ -20,10 +20,10 @@
     background-color: rgba(181, 59, 59, 1)
 }
 
-#AddPeople{
+#AddCheckpoint{
     background-color: rgba(41, 156, 3, 0.7)
 }
 
-#AddPeople:hover{
+#AddCheckpoint:hover{
     background-color: rgba(41, 156, 3, 1)
 }
