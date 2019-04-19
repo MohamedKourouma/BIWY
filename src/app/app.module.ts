@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDatepickerModule, MatTabsModule} from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { CheckpointComponent } from './home/checkpoint/checkpoint.component';
 import { PeopleComponent } from './home/people/people.component';
 import { AddPeopleComponent } from './home/people/add-people/add-people.component';
 import { DataService } from './data/data.service';
+import {AddCheckpointComponent} from "./home/checkpoint/add-checkpoint/add-checkpoint.component";
 import { DetailCheckpointComponent } from './home/checkpoint/detail-checkpoint/detail-checkpoint.component';
 
 @NgModule({
@@ -22,25 +23,28 @@ import { DetailCheckpointComponent } from './home/checkpoint/detail-checkpoint/d
         HomeComponent,
         LoginComponent,
         CheckpointComponent,
+        AddCheckpointComponent,
         PeopleComponent,
         AddPeopleComponent,
         DetailCheckpointComponent,
+
     ],
-    imports: [
-        AppRoutingModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MaterialModule,
-        HttpClientModule
-    ],
+  imports: [
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
+    HttpClientModule,
+    MatTabsModule,
+  ],
     bootstrap: [AppComponent],
     providers: [
         { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true } },
         DataService
     ],
-    entryComponents: [PeopleComponent, AddPeopleComponent]
+    entryComponents: [PeopleComponent, AddPeopleComponent, CheckpointComponent, AddCheckpointComponent]
 })
 
 export class AppModule { }
