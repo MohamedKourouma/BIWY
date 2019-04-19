@@ -26,6 +26,10 @@ export class DataService {
         return this.httpClient.post<PersonResult>(personApi, person);
     }
 
+    removePerson(itemId: any): Observable<PersonResult> {
+        return this.httpClient.delete<PersonResult>(personApi + '/' + itemId);
+    }
+
     getPersonsByCheckpoint(checkpointId: number){
       return this.httpClient.get<PersonViewResult>(personApi + '/checkpoint/' + checkpointId);
     }

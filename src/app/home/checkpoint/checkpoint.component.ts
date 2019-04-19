@@ -6,8 +6,6 @@ import { Checkpoint, CPResult } from "../../../models/Checkpoint";
 import { AddPeopleComponent } from "../people/add-people/add-people.component";
 import { AddCheckpointComponent } from "./add-checkpoint/add-checkpoint.component";
 import { DataService } from "../../data/data.service";
-import {Checkpoint, CPResult} from "../../../models/Checkpoint";
-import { DataService } from 'src/app/data/data.service';
 
 const baseUrl: string = '/api/checkpoints';
 
@@ -21,15 +19,7 @@ export class CheckpointComponent implements OnInit {
   displayedColumns: string[] = ['id', 'descript', 'start', 'end', 'action'];
   dataSource = new MatTableDataSource();
   checkpointId: any;
-    displayedColumns: string[] = ['id', 'descript', 'start', 'end'];
-    dataSource = new MatTableDataSource();
-
-
-  constructor(
-    public route: Router,
-    private httpClient: HttpClient,
-    private dataService: DataService
-  ) { }
+  
     constructor(
         private dataService: DataService,
         public route: Router,

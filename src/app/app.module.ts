@@ -16,6 +16,7 @@ import { AddPeopleComponent } from './home/people/add-people/add-people.componen
 import { DataService } from './data/data.service';
 import {AddCheckpointComponent} from "./home/checkpoint/add-checkpoint/add-checkpoint.component";
 import { DetailCheckpointComponent } from './home/checkpoint/detail-checkpoint/detail-checkpoint.component';
+import { DeletePeopleComponent } from './home/people/delete-people/delete-people.component';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { DetailCheckpointComponent } from './home/checkpoint/detail-checkpoint/d
         PeopleComponent,
         AddPeopleComponent,
         DetailCheckpointComponent,
+        DeletePeopleComponent,
 
     ],
   imports: [
@@ -44,7 +46,7 @@ import { DetailCheckpointComponent } from './home/checkpoint/detail-checkpoint/d
         { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true } },
         DataService
     ],
-    entryComponents: [PeopleComponent, AddPeopleComponent, CheckpointComponent, AddCheckpointComponent]
+    entryComponents: [PeopleComponent, AddPeopleComponent, DeletePeopleComponent, CheckpointComponent, AddCheckpointComponent]
 })
 
 export class AppModule { }

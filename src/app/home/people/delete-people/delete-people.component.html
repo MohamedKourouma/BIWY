@@ -1,0 +1,11 @@
+<p>
+  Do you really want to delete this person ? {{data.itemId}}
+</p>
+<div id="DeleteChoice">
+  <button id="Cancel" mat-button (click)="cancel()" cdkFocusInitial>
+    No
+  </button>
+  <button id="DeletePeople" mat-button (click)="delete()">
+    Yes
+  </button>
+</div>
