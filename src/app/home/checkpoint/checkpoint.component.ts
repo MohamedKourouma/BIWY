@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatTableDataSource, MatPaginator, MatDialog } from '@angular/material';
+import {MatTableDataSource, MatPaginator, MatDialog, MatTable} from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { Checkpoint, CPResult } from "../../../models/Checkpoint";
-import { AddPeopleComponent } from "../people/add-people/add-people.component";
 import { AddCheckpointComponent } from "./add-checkpoint/add-checkpoint.component";
 import { DataService } from "../../data/data.service";
+import {Person, PersonView} from "../../../models/Person";
 
 const baseUrl: string = '/api/checkpoints';
 
@@ -19,7 +19,6 @@ export class CheckpointComponent implements OnInit {
   displayedColumns: string[] = ['id', 'descript', 'start', 'end', 'action'];
   dataSource = new MatTableDataSource();
   checkpointId: any;
-  
     constructor(
         private dataService: DataService,
         public route: Router,
@@ -28,22 +27,14 @@ export class CheckpointComponent implements OnInit {
     ) { }
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
-
+  @ViewChild(MatTable) table: MatTable<Checkpoint>;
     ngOnInit() {
         console.log("Initialisation checkpoint ...");
         this.dataSource.paginator = this.paginator;
 
-
-        this.httpClient
-          .get<CPResult>(baseUrl)
-          .subscribe(res => {
-            console.log(res);
-
-            this.dataSource = new MatTableDataSource<Checkpoint>(res.data);
-          },
-            error => {
-              console.log('Checkpoints loading failed');
-            });
+        this.dataService.getCheckpoints().subscribe(result => {
+          this.dataSource = new MatTableDataSource<Checkpoint>(result.data);
+        });
     }
 
     applyFilter(filterValue: string) {
@@ -55,23 +46,33 @@ export class CheckpointComponent implements OnInit {
             data: {}
         });
         dialogRef.afterClosed().subscribe(entry => {
-            /*if (entry !== null) {
+            if (entry !== null) {
               console.log(
-                'Person{' + entry.person_first_name
-                + ', ' + entry.person_last_name
-                + ', ' + entry.person_mail
-                + ', ' + entry.person_phone
+                'Checkpoint {' + entry.checkpoint_description
+                + ', ' + entry.checkpoint_start_date
+                + ', ' + entry.checkpoint_end_date
                 + '}'
               );
-              this.dataService.addPerson(entry).subscribe(result => {
+              this.dataService.addCheckpoint(entry).subscribe(result => {
                 if (result.status === 'success') {
                   this.refresh();
                 }
               });
-            }*/
+            }
             console.log('The dialog should have closed.');
         });
     }
+
+  refresh() {
+    this.dataService.getLatestCheckpoint().subscribe(result => {
+      if (result.status === 'not_modified' || result.status === 'success') {
+        // @ts-ignore
+        this.dataSource.data.push(result.data);
+        this.table.renderRows();
+        console.log('Table should have rendered.');
+      }
+    });
+  }
 
 
   consultItem(id){

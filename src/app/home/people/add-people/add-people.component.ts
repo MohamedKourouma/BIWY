@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
-import { Person_add_edit, Person } from './../../../../models/Person';
+import { Person } from './../../../../models/Person';
 
 @Component({
     selector: 'app-add-people',
@@ -11,18 +11,11 @@ import { Person_add_edit, Person } from './../../../../models/Person';
 
 export class AddPeopleComponent implements OnInit {
 
-    messageSnackBar: string;
-    actionSnackBar: string;
+
     FormPersonName: FormGroup;
     FormPersonContact: FormGroup;
     FormPicture: FormGroup;
 
-    newPerson: Person_add_edit = {
-        person_first_name: '',
-        person_last_name: '',
-        person_mail: '',
-        person_phone: ''
-    };
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public person: Person,
@@ -63,11 +56,6 @@ export class AddPeopleComponent implements OnInit {
         this.dialogRef.close();
     }
 
-    openSnackBar(message: string, action: string) {
-        this.snackBar.open(message, action, {
-            duration: 2000,
-        });
-    }
 
     public submitPerson() {
         this.person.person_first_name = this.FormPersonName.get('firstName').value;
@@ -75,5 +63,6 @@ export class AddPeopleComponent implements OnInit {
         this.person.person_mail = this.FormPersonContact.get('email').value;
         this.person.person_phone = this.FormPersonContact.get('phone').value;
         this.dialogRef.close(this.person);
+        this.snackBar.open('Person saved sucessfully');
     }
 }

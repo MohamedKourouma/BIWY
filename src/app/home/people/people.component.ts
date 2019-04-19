@@ -61,7 +61,7 @@ export class PeopleComponent implements OnInit {
     }
 
     refreshAfterAdd() {
-        this.dataService.getLatest().subscribe(result => {
+        this.dataService.getLatestPerson().subscribe(result => {
             if (result.status === 'not_modified' || result.status === 'success') {
                 // @ts-ignore
               this.dataSource.data.push(result.data);
@@ -98,7 +98,7 @@ export class PeopleComponent implements OnInit {
     }
 
     refreshAfterRemove() {
-        this.dataService.getLatest().subscribe(result => {
+        this.dataService.getLatestPerson().subscribe(result => {
             if (result.status === 'not_modified' || result.status === 'success') {
                 // @ts-ignore
               this.dataSource.data.splice(this.indexPop,1);
