@@ -11,3 +11,11 @@ table {
 .spacer {
   flex: 1 1 auto;
 }
+
+.mat-icon-button {
+  color: grey;
+}
+
+.mat-icon-button:hover {
+  color: black;
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatDialog, MatTable } from '@angular/material';
 import { AddPeopleComponent } from './add-people/add-people.component';
-import { Person } from '../../../models/Person';
+import {Person, PersonView, PersonViewResult} from '../../../models/Person';
 import { DataService } from 'src/app/data/data.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { DataService } from 'src/app/data/data.service';
 
 export class PeopleComponent implements OnInit {
 
-    displayedColumns: string[] = ['id', 'firstname', 'lastname', 'phone', 'email'];
+    displayedColumns: string[] = ['id', 'firstname', 'lastname', 'phone', 'email', 'position', 'action'];
     dataSource = new MatTableDataSource();
 
     constructor(
@@ -26,7 +26,7 @@ export class PeopleComponent implements OnInit {
         console.log('Initialisation people ...');
         this.dataSource.paginator = this.paginator;
         this.dataService.getPersons().subscribe(result => {
-            this.dataSource = new MatTableDataSource<Person>(result.data);
+            this.dataSource = new MatTableDataSource<PersonView>(result.data);
         });
     }
 
@@ -61,10 +61,23 @@ export class PeopleComponent implements OnInit {
     refresh() {
         this.dataService.getLatest().subscribe(result => {
             if (result.status === 'not_modified' || result.status === 'success') {
-                this.dataSource.data.push(result.data);
+                // @ts-ignore
+              this.dataSource.data.push(result.data);
                 this.table.renderRows();
                 console.log('Table should have rendered.');
             }
         });
     }
+
+  consultItem(itemId: any){
+    console.log('Consult item with id : ' + itemId);
+  }
+
+  editItem(item: any){
+    console.log('Edit item : ' + item);
+  }
+
+  deleteItem(itemId: any){
+    console.log('Delete item with id : ' + itemId);
+  }
 }

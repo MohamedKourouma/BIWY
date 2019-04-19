@@ -14,6 +14,7 @@ import { CheckpointComponent } from './home/checkpoint/checkpoint.component';
 import { PeopleComponent } from './home/people/people.component';
 import { AddPeopleComponent } from './home/people/add-people/add-people.component';
 import { DataService } from './data/data.service';
+import { DetailCheckpointComponent } from './home/checkpoint/detail-checkpoint/detail-checkpoint.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { DataService } from './data/data.service';
         CheckpointComponent,
         PeopleComponent,
         AddPeopleComponent,
+        DetailCheckpointComponent,
     ],
     imports: [
         AppRoutingModule,
