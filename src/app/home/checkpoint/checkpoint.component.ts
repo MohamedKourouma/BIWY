@@ -6,6 +6,7 @@ import { Checkpoint, CPResult } from "../../../models/Checkpoint";
 import { AddCheckpointComponent } from "./add-checkpoint/add-checkpoint.component";
 import { DataService } from "../../data/data.service";
 import {Person, PersonView} from "../../../models/Person";
+import { DeleteCheckpointComponent } from './delete-checkpoint/delete-checkpoint.component';
 
 const baseUrl: string = '/api/checkpoints';
 
@@ -18,6 +19,8 @@ export class CheckpointComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'descript', 'start', 'end', 'action'];
   dataSource = new MatTableDataSource();
+  indexPop: number;
+
   checkpointId: any;
     constructor(
         private dataService: DataService,
@@ -55,7 +58,7 @@ export class CheckpointComponent implements OnInit {
               );
               this.dataService.addCheckpoint(entry).subscribe(result => {
                 if (result.status === 'success') {
-                  this.refresh();
+                  this.refreshAfterAdd();
                 }
               });
             }
@@ -63,7 +66,7 @@ export class CheckpointComponent implements OnInit {
         });
     }
 
-  refresh() {
+  refreshAfterAdd() {
     this.dataService.getLatestCheckpoint().subscribe(result => {
       if (result.status === 'not_modified' || result.status === 'success') {
         // @ts-ignore
@@ -84,7 +87,32 @@ export class CheckpointComponent implements OnInit {
       console.log('Edit item : ' + item);
     }
 
-    deleteItem(itemId: any){
-      console.log('Delete item with id : ' + itemId);
-    }
+    deleteItem(itemId: number, i: number){
+      // console.log('Delete item with id : ' + itemId);
+      this.indexPop=i;
+      const dialogRef = this.dialog.open(DeleteCheckpointComponent, {
+          data: {itemId : itemId}
+      });
+          dialogRef.afterClosed().subscribe(entry => {
+              if (entry != null) {
+                  this.dataService.removeCheckpoint(itemId).subscribe(result => {
+                      if (result.status === 'success') {
+                        console.log('Delete item with id : ' + itemId);
+                        this.refreshAfterRemove();
+                       }
+                   });
+              }
+          });
+      }
+  
+      refreshAfterRemove() {
+          this.dataService.getLatestPerson().subscribe(result => {
+              if (result.status === 'not_modified' || result.status === 'success') {
+                  // @ts-ignore
+                this.dataSource.data.splice(this.indexPop,1);
+                  this.table.renderRows();
+                  console.log('Table should have rendered.');
+              }
+          });
+      }
 }

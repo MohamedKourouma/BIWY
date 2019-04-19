@@ -44,6 +44,9 @@ export class DataService {
       return this.httpClient.post<CPResult>(checkpointApi, cp);
     }
 
+    removeCheckpoint(itemId: any): Observable<CPResult> {
+        return this.httpClient.delete<CPResult>(checkpointApi + '/' + itemId);
+    }
     getPersonsByCheckpoint(checkpointId: number){
       return this.httpClient.get<PersonViewResult>(personApi + '/checkpoint/' + checkpointId);
     }

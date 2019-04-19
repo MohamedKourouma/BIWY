@@ -17,6 +17,7 @@ import { DataService } from './data/data.service';
 import {AddCheckpointComponent} from "./home/checkpoint/add-checkpoint/add-checkpoint.component";
 import { DetailCheckpointComponent } from './home/checkpoint/detail-checkpoint/detail-checkpoint.component';
 import { DeletePeopleComponent } from './home/people/delete-people/delete-people.component';
+import { DeleteCheckpointComponent } from './home/checkpoint/delete-checkpoint/delete-checkpoint.component';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import { DeletePeopleComponent } from './home/people/delete-people/delete-people
         AddPeopleComponent,
         DetailCheckpointComponent,
         DeletePeopleComponent,
+        DeleteCheckpointComponent,
 
     ],
   imports: [
@@ -46,7 +48,7 @@ import { DeletePeopleComponent } from './home/people/delete-people/delete-people
         { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: true } },
         DataService
     ],
-    entryComponents: [PeopleComponent, AddPeopleComponent, DeletePeopleComponent, CheckpointComponent, AddCheckpointComponent]
+    entryComponents: [PeopleComponent, AddPeopleComponent, DeletePeopleComponent, CheckpointComponent, AddCheckpointComponent, DeleteCheckpointComponent]
 })
 
 export class AppModule { }

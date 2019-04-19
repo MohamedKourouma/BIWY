@@ -86,10 +86,10 @@ export class PeopleComponent implements OnInit {
         data: {itemId : itemId}
     });
         dialogRef.afterClosed().subscribe(entry => {
-            if (entry !== null) {
+            if (entry != null) {
                 this.dataService.removePerson(itemId).subscribe(result => {
                     if (result.status === 'success') {
-                      console.log('Delete item with id : ' + entry.itemId);
+                      console.log('Delete item with id : ' + itemId);
                       this.refreshAfterRemove();
                      }
                  });
