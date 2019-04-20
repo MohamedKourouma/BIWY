@@ -9,20 +9,20 @@ import { LocalStorageService } from 'angular-web-storage';
 })
 
 export class HomeComponent implements OnInit {
-  lastUpdate = new Promise
-  ((resolve, reject) => {
-      const date = new Date();
-      setTimeout(
-        () => {
-          resolve(date);
-        },2000
-      );
-    }
-  );
+
+    lastUpdate = new Promise((resolve, reject) => {
+        const date = new Date();
+        setTimeout(
+            () => {
+                resolve(date);
+            }, 2000
+        );
+    });
+
     constructor(public route: Router, private local: LocalStorageService) { }
 
     ngOnInit() {
-        console.log("Initialisation home ...");
+        console.log('Initialisation home ...');
     }
 
     logout() {

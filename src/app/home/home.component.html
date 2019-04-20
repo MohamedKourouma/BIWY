@@ -6,12 +6,6 @@
 
     <span class="spacer"></span>
 
-    <input class="cadre" placeholder="Search" type="search" style="font-family:Geneva, sans-serif; font-style: italic;">
-    <mat-icon>search</mat-icon>
-
-    <span class="spacer"></span>
-    <span class="spacer"></span>
-
     <button mat-button [matMenuTriggerFor]="user">Username <mat-icon>person_pin</mat-icon> </button>
     <mat-menu #user="matMenu">
         <button mat-menu-item>
@@ -33,16 +27,16 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" opened class="sidenav">
         <mat-nav-list>
-            <a mat-list-item [routerLink]="['/home', {outlets: {'sidenav': ['checkpoint']}}]">
+            <a mat-list-item [routerLink]="['/home/checkpoint']">
                 <h3>Checkpoints</h3>
             </a>
-            <a mat-list-item [routerLink]="['/home', {outlets: {'sidenav': ['person']}}]">
+            <a mat-list-item [routerLink]="['/home/person']">
                 <h3>Personnes</h3>
             </a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <router-outlet name='sidenav'></router-outlet>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
 

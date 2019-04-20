@@ -47,28 +47,30 @@
 
                 <!-- Position Column -->
                 <ng-container matColumnDef="position">
-                  <th mat-header-cell *matHeaderCellDef> Position </th>
-                  <td mat-cell *matCellDef="let element"> {{element.person_position}} </td>
+                    <th mat-header-cell *matHeaderCellDef> Position </th>
+                    <td mat-cell *matCellDef="let element"> {{element.person_position}} </td>
                 </ng-container>
 
-              <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef> </th>
-                <td mat-cell *matCellDef="let element; let i = index;" >
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> </th>
+                    <td mat-cell *matCellDef="let element; let i = index;">
 
-                  <button mat-icon-button (click)="consultItem(element.person_id)" aria-label="consul-pers" matTooltip="Consult" >
-                    <mat-icon>visibility</mat-icon>
-                  </button>
+                        <button mat-icon-button (click)="consultItem(element.person_id)" aria-label="consul-pers"
+                            matTooltip="Consult">
+                            <mat-icon>visibility</mat-icon>
+                        </button>
 
-                  <button mat-icon-button (click)="editItem(element)" aria-label="edit-pers" matTooltip="Edit">
-                    <mat-icon>edit</mat-icon>
-                  </button>
+                        <button mat-icon-button (click)="editItem(element)" aria-label="edit-pers" matTooltip="Edit">
+                            <mat-icon>edit</mat-icon>
+                        </button>
 
-                  <button mat-icon-button (click)="deleteItem(element.person_id, i)" aria-label="delete-pers" matTooltip="Delete">
-                    <mat-icon>delete</mat-icon>
-                  </button>
+                        <button mat-icon-button (click)="deleteItem(element.person_id, i)" aria-label="delete-pers"
+                            matTooltip="Delete">
+                            <mat-icon>delete</mat-icon>
+                        </button>
 
-                </td>
-              </ng-container>
+                    </td>
+                </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

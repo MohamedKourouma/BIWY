@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
-import {Checkpoint} from "../../../../models/Checkpoint";
+import { Checkpoint } from '../../../../models/Checkpoint';
 
 @Component({
     selector: 'app-add-checkpoint',
@@ -42,13 +42,13 @@ export class AddCheckpointComponent implements OnInit {
     onNoClick(): void {
         this.dialogRef.close();
     }
-    
 
-  submitCheckpoint() {
-    this.checkpoint.checkpoint_description = this.FormCheckpointDescription.get('description').value;
-    this.checkpoint.checkpoint_start_date = this.FormCheckpointDate.get('sdate').value;
-    this.checkpoint.checkpoint_end_date = this.FormCheckpointDate.get('edate').value;
-    this.dialogRef.close(this.checkpoint);
-    this.snackBar.open('Checkpoint saved sucessfully');
-  }
+
+    submitCheckpoint() {
+        this.checkpoint.checkpoint_description = this.FormCheckpointDescription.get('description').value;
+        this.checkpoint.checkpoint_start_date = this.FormCheckpointDate.get('sdate').value;
+        this.checkpoint.checkpoint_end_date = this.FormCheckpointDate.get('edate').value;
+        this.dialogRef.close(this.checkpoint);
+        this.snackBar.open('Checkpoint saved sucessfully');
+    }
 }

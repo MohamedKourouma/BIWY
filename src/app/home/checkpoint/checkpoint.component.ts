@@ -1,14 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import {MatTableDataSource, MatPaginator, MatDialog, MatTable} from '@angular/material';
-import { HttpClient } from '@angular/common/http';
-import { Checkpoint, CPResult } from "../../../models/Checkpoint";
-import { AddCheckpointComponent } from "./add-checkpoint/add-checkpoint.component";
-import { DataService } from "../../data/data.service";
-import {Person, PersonView} from "../../../models/Person";
+import { MatTableDataSource, MatPaginator, MatDialog, MatTable } from '@angular/material';
+import { Checkpoint } from '../../../models/Checkpoint';
+import { AddCheckpointComponent } from './add-checkpoint/add-checkpoint.component';
 import { DeleteCheckpointComponent } from './delete-checkpoint/delete-checkpoint.component';
+import { CheckpointService } from 'src/services/checkpoint/checkpoint.service';
 
-const baseUrl: string = '/api/checkpoints';
 
 @Component({
     selector: 'app-checkpoint',
@@ -17,26 +14,25 @@ const baseUrl: string = '/api/checkpoints';
 })
 export class CheckpointComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'descript', 'start', 'end', 'action'];
-  dataSource = new MatTableDataSource();
-  indexPop: number;
+    displayedColumns: string[] = ['id', 'descript', 'start', 'end', 'action'];
+    dataSource = new MatTableDataSource();
+    indexPop: number;
 
-  checkpointId: any;
+    checkpointId: any;
     constructor(
-        private dataService: DataService,
         public route: Router,
-        private httpClient: HttpClient,
-        public dialog: MatDialog
+        public dialog: MatDialog,
+        private checkpointService: CheckpointService
     ) { }
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatTable) table: MatTable<Checkpoint>;
+    @ViewChild(MatTable) table: MatTable<Checkpoint>;
     ngOnInit() {
-        console.log("Initialisation checkpoint ...");
+        console.log('Initialisation checkpoint ...');
         this.dataSource.paginator = this.paginator;
 
-        this.dataService.getCheckpoints().subscribe(result => {
-          this.dataSource = new MatTableDataSource<Checkpoint>(result.data);
+        this.checkpointService.getAll().subscribe(result => {
+            this.dataSource = new MatTableDataSource<Checkpoint>(result.data);
         });
     }
 
@@ -50,69 +46,65 @@ export class CheckpointComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(entry => {
             if (entry !== null) {
-              console.log(
-                'Checkpoint {' + entry.checkpoint_description
-                + ', ' + entry.checkpoint_start_date
-                + ', ' + entry.checkpoint_end_date
-                + '}'
-              );
-              this.dataService.addCheckpoint(entry).subscribe(result => {
-                if (result.status === 'success') {
-                  this.refreshAfterAdd();
-                }
-              });
+                console.log(
+                    'Checkpoint {' + entry.checkpoint_description
+                    + ', ' + entry.checkpoint_start_date
+                    + ', ' + entry.checkpoint_end_date
+                    + '}'
+                );
+                this.checkpointService.addOne(entry).subscribe(result => {
+                    if (result.status === 'success') {
+                        this.refreshAfterAdd();
+                    }
+                });
             }
             console.log('The dialog should have closed.');
         });
     }
 
-  refreshAfterAdd() {
-    this.dataService.getLatestCheckpoint().subscribe(result => {
-      if (result.status === 'not_modified' || result.status === 'success') {
-        // @ts-ignore
-        this.dataSource.data.push(result.data);
-        this.table.renderRows();
-        console.log('Table should have rendered.');
-      }
-    });
-  }
-
-
-  consultItem(id){
-    console.log('Consult item with id : ' + id);
-    //this.route.navigate(['/home/detail-checkpoint']);
-  }
-
-    editItem(item: any){
-      console.log('Edit item : ' + item);
+    refreshAfterAdd() {
+        this.checkpointService.getLast().subscribe(result => {
+            if (result.status === 'not_modified' || result.status === 'success') {
+                // @ts-ignore
+                this.dataSource.data.push(result.data);
+                this.table.renderRows();
+                console.log('Table should have rendered.');
+            }
+        });
     }
 
-    deleteItem(itemId: number, i: number){
-      // console.log('Delete item with id : ' + itemId);
-      this.indexPop=i;
-      const dialogRef = this.dialog.open(DeleteCheckpointComponent, {
-          data: {itemId : itemId}
-      });
-          dialogRef.afterClosed().subscribe(entry => {
-              if (entry != null) {
-                  this.dataService.removeCheckpoint(itemId).subscribe(result => {
-                      if (result.status === 'success') {
+    consultItem(id) {
+        console.log('Consult item with id : ' + id);
+    }
+
+    editItem(item: any) {
+        console.log('Edit item : ' + item);
+    }
+
+    deleteItem(itemId: number, i: number) {
+        this.indexPop = i;
+        const dialogRef = this.dialog.open(DeleteCheckpointComponent, {
+            data: { itemId }
+        });
+        dialogRef.afterClosed().subscribe(entry => {
+            if (entry != null) {
+                this.checkpointService.removeOne(itemId).subscribe(result => {
+                    if (result.status === 'success') {
                         console.log('Delete item with id : ' + itemId);
                         this.refreshAfterRemove();
-                       }
-                   });
-              }
-          });
-      }
-  
-      refreshAfterRemove() {
-          this.dataService.getLatestPerson().subscribe(result => {
-              if (result.status === 'not_modified' || result.status === 'success') {
-                  // @ts-ignore
-                this.dataSource.data.splice(this.indexPop,1);
-                  this.table.renderRows();
-                  console.log('Table should have rendered.');
-              }
-          });
-      }
+                    }
+                });
+            }
+        });
+    }
+
+    refreshAfterRemove() {
+        this.checkpointService.getLast().subscribe(result => {
+            if (result.status === 'not_modified' || result.status === 'success') {
+                this.dataSource.data.splice(this.indexPop, 1);
+                this.table.renderRows();
+                console.log('Table should have rendered.');
+            }
+        });
+    }
 }

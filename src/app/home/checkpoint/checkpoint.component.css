@@ -1,4 +1,3 @@
-/* Structure */
 table {
     width: 80%;
 }
@@ -13,9 +12,9 @@ table {
 }
 
 .mat-icon-button {
-  color: grey;
+    color: grey;
 }
 
 .mat-icon-button:hover {
-  color: black;
+    color: black;
 }

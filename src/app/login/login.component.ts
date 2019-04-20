@@ -16,13 +16,13 @@ export class LoginComponent implements OnInit {
     error = '';
 
     constructor(public route: Router, private local: LocalStorageService) {
-        let user = JSON.parse(local.get('currentUser'));
+        const user = JSON.parse(local.get('currentUser'));
         this.status = user && user.status;
     }
 
     ngOnInit() {
-        console.log("Initialisation Login...");
-        if (this.status == 'connected') {
+        console.log('Initialisation Login...');
+        if (this.status === 'connected') {
             this.route.navigate(['/home']);
         }
     }

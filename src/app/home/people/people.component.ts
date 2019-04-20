@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatDialog, MatTable } from '@angular/material';
 import { AddPeopleComponent } from './add-people/add-people.component';
-import {Person, PersonView, PersonViewResult} from '../../../models/Person';
-import { DataService } from 'src/app/data/data.service';
+import { Person, PersonView, PersonViewResult } from '../../../models/Person';
 import { DeletePeopleComponent } from './delete-people/delete-people.component';
+import { PersonService } from 'src/services/person/person.service';
 
 @Component({
     selector: 'app-people',
@@ -18,7 +18,7 @@ export class PeopleComponent implements OnInit {
     indexPop: number;
 
     constructor(
-        private dataService: DataService,
+        private personService: PersonService,
         public dialog: MatDialog
     ) { }
 
@@ -27,7 +27,7 @@ export class PeopleComponent implements OnInit {
     ngOnInit() {
         console.log('Initialisation people ...');
         this.dataSource.paginator = this.paginator;
-        this.dataService.getPersons().subscribe(result => {
+        this.personService.getAll().subscribe(result => {
             this.dataSource = new MatTableDataSource<PersonView>(result.data);
         });
     }
@@ -50,7 +50,7 @@ export class PeopleComponent implements OnInit {
                     + ', ' + entry.person_phone
                     + '}'
                 );
-                this.dataService.addPerson(entry).subscribe(result => {
+                this.personService.addOne(entry).subscribe(result => {
                     if (result.status === 'success') {
                         this.refreshAfterAdd();
                     }
@@ -61,47 +61,47 @@ export class PeopleComponent implements OnInit {
     }
 
     refreshAfterAdd() {
-        this.dataService.getLatestPerson().subscribe(result => {
+        this.personService.getLast().subscribe(result => {
             if (result.status === 'not_modified' || result.status === 'success') {
                 // @ts-ignore
-              this.dataSource.data.push(result.data);
+                this.dataSource.data.push(result.data);
                 this.table.renderRows();
                 console.log('Table should have rendered.');
             }
         });
     }
 
-  consultItem(itemId: any){
-    console.log('Consult item with id : ' + itemId);
-  }
+    consultItem(itemId: any) {
+        console.log('Consult item with id : ' + itemId);
+    }
 
-  editItem(item: any){
-    console.log('Edit item : ' + item);
-  }
+    editItem(item: any) {
+        console.log('Edit item : ' + item);
+    }
 
-  deleteItem(itemId: number, i: number){
-    // console.log('Delete item with id : ' + itemId);
-    this.indexPop=i;
-    const dialogRef = this.dialog.open(DeletePeopleComponent, {
-        data: {itemId : itemId}
-    });
+    deleteItem(itemId: number, i: number) {
+        // console.log('Delete item with id : ' + itemId);
+        this.indexPop = i;
+        const dialogRef = this.dialog.open(DeletePeopleComponent, {
+            data: { itemId: itemId }
+        });
         dialogRef.afterClosed().subscribe(entry => {
             if (entry != null) {
-                this.dataService.removePerson(itemId).subscribe(result => {
+                this.personService.removeOne(itemId).subscribe(result => {
                     if (result.status === 'success') {
-                      console.log('Delete item with id : ' + itemId);
-                      this.refreshAfterRemove();
-                     }
-                 });
+                        console.log('Delete item with id : ' + itemId);
+                        this.refreshAfterRemove();
+                    }
+                });
             }
         });
     }
 
     refreshAfterRemove() {
-        this.dataService.getLatestPerson().subscribe(result => {
+        this.personService.getLast().subscribe(result => {
             if (result.status === 'not_modified' || result.status === 'success') {
                 // @ts-ignore
-              this.dataSource.data.splice(this.indexPop,1);
+                this.dataSource.data.splice(this.indexPop, 1);
                 this.table.renderRows();
                 console.log('Table should have rendered.');
             }
