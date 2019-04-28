@@ -10,15 +10,15 @@
     <mat-menu #user="matMenu">
         <button mat-menu-item>
             <mat-icon>person</mat-icon>
-            <span>Profil</span>
+            <span>Profile</span>
         </button>
         <button mat-menu-item>
             <mat-icon>settings</mat-icon>
-            <span>Param&egrave;tres</span>
+            <span>Settings</span>
         </button>
         <button mat-menu-item (click)="logout()">
             <mat-icon>logout</mat-icon>
-            <span>D&eacute;connexion</span>
+            <span>Log out</span>
         </button>
     </mat-menu>
 
@@ -27,11 +27,13 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="side" opened class="sidenav">
         <mat-nav-list>
-            <a mat-list-item [routerLink]="['/home/checkpoint']">
-                <h3>Checkpoints</h3>
+            <a mat-list-item [routerLink]="['/home/checkpoint']" style="font-family: Arial, Helvetica, sans-serif">
+              <mat-icon>place</mat-icon>
+              <h3>Checkpoints</h3>
             </a>
-            <a mat-list-item [routerLink]="['/home/person']">
-                <h3>Personnes</h3>
+            <a mat-list-item [routerLink]="['/home/person']" style="font-family: Arial, Helvetica, sans-serif">
+              <mat-icon>group</mat-icon>
+              <h3>People</h3>
             </a>
         </mat-nav-list>
     </mat-sidenav>
@@ -40,4 +42,16 @@
     </mat-sidenav-content>
 </mat-sidenav-container>
 
-<mat-toolbar class="footer">Mise à jour: {{lastUpdate |async | date}}</mat-toolbar>
+<!-- Footer -->
+<footer class="footer">
+  <div>
+  <!-- Copyright -->
+  <div style="float: right">© 2019 Copyright: Miage Groupe 6 </div>
+  <!-- Copyright -->
+  <div style="float: left">Last update: {{lastUpdate |async | date}} </div>
+
+  </div>
+
+</footer>
+<!-- Footer -->
+

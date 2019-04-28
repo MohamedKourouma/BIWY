@@ -8,7 +8,7 @@
 </div>
 
 <mat-card id="Inscription" class="cadre">
-    <h2> Bienvenue sur BIWY ! </h2>
+    <h2> Welcome to BIWY ! </h2>
     <mat-card-content>
         <form class="align">
             <table cellspacing="0" class="align">
@@ -34,12 +34,11 @@
     <div *ngIf="error" class="alert"> {{error}}</div>
 
     <mat-card-actions>
-        <button mat-raised-button (click)="login()" color="primary">Login</button>
+        <button mat-raised-button (click)="login()" color="primary">Log in</button>
     </mat-card-actions>
 
     <div class="block-list">
-        Pour pouvoir acc&eacute;der &agrave; l'application, <br />
-        vous devez saisir votre login et votre mot de passe.
+        To log in, please enter your login and password<br />
     </div>
 
 </mat-card>

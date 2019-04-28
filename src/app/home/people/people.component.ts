@@ -71,13 +71,13 @@ export class PeopleComponent implements OnInit {
         });
     }
 
-    consultItem(itemId: any) {
+    /*consultItem(itemId: any) {
         console.log('Consult item with id : ' + itemId);
     }
 
     editItem(item: any) {
         console.log('Edit item : ' + item);
-    }
+    }*/
 
     deleteItem(itemId: number, i: number) {
         // console.log('Delete item with id : ' + itemId);

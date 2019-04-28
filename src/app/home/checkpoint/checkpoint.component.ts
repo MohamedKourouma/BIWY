@@ -18,7 +18,8 @@ export class CheckpointComponent implements OnInit {
     dataSource = new MatTableDataSource();
     indexPop: number;
 
-    checkpointId: any;
+
+
     constructor(
         public route: Router,
         public dialog: MatDialog,
@@ -73,13 +74,10 @@ export class CheckpointComponent implements OnInit {
         });
     }
 
-    consultItem(id) {
-        console.log('Consult item with id : ' + id);
-    }
 
-    editItem(item: any) {
+    /*editItem(item: any) {
         console.log('Edit item : ' + item);
-    }
+    }*/
 
     deleteItem(itemId: number, i: number) {
         this.indexPop = i;
@@ -101,6 +99,7 @@ export class CheckpointComponent implements OnInit {
     refreshAfterRemove() {
         this.checkpointService.getLast().subscribe(result => {
             if (result.status === 'not_modified' || result.status === 'success') {
+                // @ts-ignore
                 this.dataSource.data.splice(this.indexPop, 1);
                 this.table.renderRows();
                 console.log('Table should have rendered.');

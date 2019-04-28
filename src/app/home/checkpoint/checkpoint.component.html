@@ -1,9 +1,9 @@
 <div class="table">
     <mat-card style="margin: 1%;">
         <mat-card-title>
-            Gestion des checkpoints
+            Checkpoints Management
             <span class="spacer"></span>
-            <button mat-fab (click)="openDialogAddCheckpoint()" color="primary" style="float: right">
+            <button mat-fab (click)="openDialogAddCheckpoint()" color="primary" style="float: right" matTooltip="Add">
                 <mat-icon>add</mat-icon>
             </button>
         </mat-card-title>
@@ -46,14 +46,14 @@
                     <td mat-cell *matCellDef="let element; let i = index;">
 
                         <button mat-icon-button [routerLink]="['/home/checkpoint', element.checkpoint_id]" aria-label="consul-cp" matTooltip="Consult">
-                            <mat-icon>visibility</mat-icon>
+                            <mat-icon>pageview</mat-icon>
                         </button>
 
-                        <button mat-icon-button (click)="editItem(element)" aria-label="edit-cp" matTooltip="Edit">
+                        <!--<button mat-icon-button (click)="editItem(element)" aria-label="edit-cp" matTooltip="Edit">
                             <mat-icon>edit</mat-icon>
-                        </button>
+                        </button>-->
 
-                        <button mat-icon-button (click)="deleteItem(element.checkpoint_id)" aria-label="delete-cp"
+                        <button mat-icon-button (click)="deleteItem(element.checkpoint_id, i)" aria-label="delete-cp"
                             matTooltip="Delete">
                             <mat-icon>delete</mat-icon>
                         </button>
