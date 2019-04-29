@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatDialog, MatTable } from '@angular/material';
-import { Person, PersonView } from '../../../../models/Person';
+import { PresenceView } from '../../../../models/Presence';
 import { PersonService } from 'src/services/person/person.service';
 import { ActivatedRoute } from '@angular/router';
+import {AddPeopleComponent} from "../../people/add-people/add-people.component";
+import {AddPeopleToCheckpointComponent} from "./add-people-to-checkpoint/add-people-to-checkpoint.component";
 
 @Component({
     selector: 'app-detail-checkpoint',
@@ -11,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetailCheckpointComponent implements OnInit {
 
-    displayedColumns: string[] = ['id', 'firstname', 'lastname', 'phone', 'email', 'position'];
+    displayedColumns: string[] = ['id', 'firstname', 'lastname', 'phone', 'checktime'];
     dataSource = new MatTableDataSource();
     checkpointId = 0;
 
@@ -21,7 +23,7 @@ export class DetailCheckpointComponent implements OnInit {
         public dialog: MatDialog
     ) { }
 
-    @ViewChild(MatTable) table: MatTable<Person>;
+    @ViewChild(MatTable) table: MatTable<PresenceView>;
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     ngOnInit() {
@@ -33,11 +35,18 @@ export class DetailCheckpointComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
 
         this.personService.getAllByCheckpoint(this.checkpointId).subscribe(result => {
-            this.dataSource = new MatTableDataSource<PersonView>(result.data);
+            this.dataSource = new MatTableDataSource<PresenceView>(result.data);
         });
     }
 
     applyFilter(filterValue: string) {
         this.dataSource.filter = filterValue.trim().toLowerCase();
     }
+
+  openDialogAddPeople(): void {
+      this.dialog.open(AddPeopleToCheckpointComponent, {
+      data: {}
+      });
+
+  }
 }

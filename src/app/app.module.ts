@@ -17,6 +17,7 @@ import { AddCheckpointComponent } from './home/checkpoint/add-checkpoint/add-che
 import { DetailCheckpointComponent } from './home/checkpoint/detail-checkpoint/detail-checkpoint.component';
 import { DeletePeopleComponent } from './home/people/delete-people/delete-people.component';
 import { DeleteCheckpointComponent } from './home/checkpoint/delete-checkpoint/delete-checkpoint.component';
+import { AddPeopleToCheckpointComponent} from "./home/checkpoint/detail-checkpoint/add-people-to-checkpoint/add-people-to-checkpoint.component";
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { DeleteCheckpointComponent } from './home/checkpoint/delete-checkpoint/d
         DetailCheckpointComponent,
         DeletePeopleComponent,
         DeleteCheckpointComponent,
+        AddPeopleToCheckpointComponent,
 
     ],
   imports: [
@@ -50,7 +52,8 @@ import { DeleteCheckpointComponent } from './home/checkpoint/delete-checkpoint/d
         DeletePeopleComponent,
         CheckpointComponent,
         AddCheckpointComponent,
-        DeleteCheckpointComponent
+        DeleteCheckpointComponent,
+        AddPeopleToCheckpointComponent
     ]
 })
 

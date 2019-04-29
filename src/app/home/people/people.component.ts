@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatDialog, MatTable } from '@angular/material';
 import { AddPeopleComponent } from './add-people/add-people.component';
-import { Person, PersonView, PersonViewResult } from '../../../models/Person';
+import { Person, PersonView } from '../../../models/Person';
 import { DeletePeopleComponent } from './delete-people/delete-people.component';
 import { PersonService } from 'src/services/person/person.service';
 
