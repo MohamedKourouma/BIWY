@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Person, PersonResult, PersonViewResult } from 'src/models/Person';
+import { PresenceResult } from 'src/models/Presence';
 
 const personApi = '/api/persons';
 
@@ -30,7 +31,7 @@ export class PersonService {
     }
 
     getAllByCheckpoint(checkpointId: number) {
-        return this.httpClient.get<PersonViewResult>(personApi + '/checkpoint/' + checkpointId);
+        return this.httpClient.get<PresenceResult>(personApi + '/checkpoint/' + checkpointId);
     }
 
     removeOne(personId: number): Observable<PersonResult>  {

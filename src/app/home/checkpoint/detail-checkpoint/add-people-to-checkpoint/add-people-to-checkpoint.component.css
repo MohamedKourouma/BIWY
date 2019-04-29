@@ -1,0 +1,12 @@
+#Done, #PersonTop{
+  display:flex;
+  justify-content:space-between;
+}
+
+#PersonTop button{
+  font-size: 2rem;
+}
+
+#people{
+
+}
