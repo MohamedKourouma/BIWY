@@ -13,6 +13,7 @@ import { PersonService } from 'src/services/person/person.service';
 
 export class PeopleComponent implements OnInit {
 
+    person: Person;
     displayedColumns: string[] = ['id', 'firstname', 'lastname', 'phone', 'email', 'position', 'action'];
     dataSource = new MatTableDataSource();
     indexPop: number;
@@ -44,15 +45,15 @@ export class PeopleComponent implements OnInit {
         dialogRef.afterClosed().subscribe(entry => {
             if (entry !== null) {
                 console.log(
-                    'Person{' + entry.person_first_name
-                    + ', ' + entry.person_last_name
-                    + ', ' + entry.person_mail
-                    + ', ' + entry.person_phone
+                    'Person{' + entry.person.person_first_name
+                    + ', ' + entry.person.person_last_name
+                    + ', ' + entry.person.person_mail
+                    + ', ' + entry.person.person_phone
                     + '}'
                 );
-                this.personService.addOne(entry).subscribe(result => {
+                this.personService.addOne(entry.person).subscribe(result => {
                     if (result.status === 'success') {
-                        this.refreshAfterAdd();
+                        this.refreshAfterAdd(entry);
                     }
                 });
             }
@@ -60,15 +61,30 @@ export class PeopleComponent implements OnInit {
         });
     }
 
-    refreshAfterAdd() {
+    // @ts-ignore
+    refreshAfterAdd(entry: any) {
         this.personService.getLast().subscribe(result => {
             if (result.status === 'not_modified' || result.status === 'success') {
-                // @ts-ignore
                 this.dataSource.data.push(result.data);
                 this.table.renderRows();
                 console.log('Table should have rendered.');
+                console.log(result.data);
+                this.uploadImage(result.data, entry.file);
             }
         });
+    }
+
+    uploadImage(person: any, file: File) {
+        console.log(person.person_id);
+        const ext = file.name.substr(file.name.lastIndexOf('.'));
+        const fileData = new FormData();
+        const fileName = person.person_id + '_' + person.person_last_name + '_' + person.person_first_name + ext;
+        fileData.append('photo', file, fileName);
+        this.personService.addImage(fileData).subscribe(
+            result => {
+                console.log(result);
+            }
+        );
     }
 
     /*consultItem(itemId: any) {

@@ -45,4 +45,8 @@ export class PersonService {
     getLastPresence(idP: string, idCP: string): Observable<PresenceResult> {
       return this.httpClient.get<PresenceResult>('/api/presence/latest/' + idP + '/' + idCP );
     }
+
+    addImage(formData: FormData) {
+        return this.httpClient.post(personApi + '/upload', formData);
+    }
 }
