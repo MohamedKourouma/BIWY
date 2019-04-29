@@ -1,0 +1,17 @@
+<div id="PersonTop">
+  <h1 mat-dialog-title>Add people</h1>
+  <button mat-button (click)="onNoClick()">&#10005;</button>
+</div>
+
+<mat-selection-list #people>
+  <mat-list-option *ngFor="let person of dataSource">
+    {{person.person_first_name}} {{person.person_first_name}}
+  </mat-list-option>
+</mat-selection-list>
+
+<ng-template matStepLabel>Done</ng-template>
+<button id="AddPeople" mat-button (click)="addPeople()" cdkFocusInitial>
+  Add
+  <mat-icon matSuffix>group_add</mat-icon>
+</button>
+
