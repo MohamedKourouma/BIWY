@@ -10,3 +10,11 @@
 #people{
 
 }
+
+#AddPeople{
+  background-color: rgba(41, 156, 3, 0.7)
+}
+
+#AddPeople:hover{
+  background-color: rgba(41, 156, 3, 1)
+}

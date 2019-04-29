@@ -3,9 +3,9 @@
   <button mat-button (click)="onNoClick()">&#10005;</button>
 </div>
 
-<mat-selection-list #people>
-  <mat-list-option *ngFor="let person of dataSource">
-    {{person.person_first_name}} {{person.person_first_name}}
+<mat-selection-list #people [(ngModel)]="selectedOptions" (change)="selectedOptions($event.target.value)">
+  <mat-list-option *ngFor="let person of dataSource" [value]="person.person_id">
+    {{person.person_first_name}} {{person.person_last_name}}
   </mat-list-option>
 </mat-selection-list>
 
@@ -14,4 +14,5 @@
   Add
   <mat-icon matSuffix>group_add</mat-icon>
 </button>
+
 

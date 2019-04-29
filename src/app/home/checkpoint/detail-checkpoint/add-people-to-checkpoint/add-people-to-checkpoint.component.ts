@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatDialog, MatTable, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Person, PersonView } from '../../../../../models/Person';
 import { PersonService } from 'src/services/person/person.service';
-import {FormBuilder, FormControl, Validators} from "@angular/forms";
+import {Presence} from "../../../../../models/Presence";
 
 
 
@@ -14,16 +14,15 @@ import {FormBuilder, FormControl, Validators} from "@angular/forms";
 export class AddPeopleToCheckpointComponent implements OnInit {
 
   dataSource: any;
+  people: any;
+  selectedOptions;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public person: Person,
+    @Inject(MAT_DIALOG_DATA) public presences: Presence[],
     private dialogRef: MatDialogRef<AddPeopleToCheckpointComponent>,
     private personService: PersonService,
     private snackBar: MatSnackBar
   ) { }
-
-
-
 
   ngOnInit() {
     this.personService.getAll().subscribe(result => {
@@ -38,7 +37,10 @@ export class AddPeopleToCheckpointComponent implements OnInit {
 
   public addPeople() {
 
+    console.log(this.selectedOptions);
+    this.dialogRef.close(this.selectedOptions);
     this.snackBar.open('People added sucessfully');
   }
+
 
 }

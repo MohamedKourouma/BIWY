@@ -1,4 +1,7 @@
-
+export interface Presence {
+  presence_id_person: string;
+  presence_id_checkpoint: string;
+}
 
 export interface PresenceView {
   presence_id_person: number;

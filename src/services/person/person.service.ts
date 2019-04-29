@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Person, PersonResult, PersonViewResult } from 'src/models/Person';
-import { PresenceResult } from 'src/models/Presence';
+import {Presence, PresenceResult} from 'src/models/Presence';
 
 const personApi = '/api/persons';
 
@@ -36,5 +36,13 @@ export class PersonService {
 
     removeOne(personId: number): Observable<PersonResult>  {
         return this.httpClient.delete<PersonResult>(personApi + '/' + personId);
+    }
+
+    addPeopleToCheckpoint(presence: Presence){
+      return this.httpClient.post<PresenceResult>('/api/presence', presence);
+    }
+
+    getLastPresence(idP: string, idCP: string): Observable<PresenceResult> {
+      return this.httpClient.get<PresenceResult>('/api/presence/latest/' + idP + '/' + idCP );
     }
 }
