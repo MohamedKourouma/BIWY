@@ -38,12 +38,15 @@
         </form>
     </mat-step>
     <mat-step [stepControl]="FormPicture" optional>
-        <form [formGroup]="FormPicture">
+            <form>
+                <input #fileInput name="photo" type="file" (change)="onChange($event)" />
+            </form>
+        <!--form [formGroup]="FormPicture">
             <ng-template matStepLabel>Picture</ng-template>
             <mat-form-field>
                 <input matInput placeholder="Address" formControlName="picture" required>
             </mat-form-field>
-        </form>
+        </form-->
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>

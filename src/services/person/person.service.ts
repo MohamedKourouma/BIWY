@@ -36,4 +36,8 @@ export class PersonService {
     removeOne(personId: number): Observable<PersonResult>  {
         return this.httpClient.delete<PersonResult>(personApi + '/' + personId);
     }
+
+    addImage(formData: FormData) {
+        return this.httpClient.post(personApi + '/upload', formData);
+    }
 }
