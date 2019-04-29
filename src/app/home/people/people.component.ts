@@ -65,6 +65,7 @@ export class PeopleComponent implements OnInit {
     refreshAfterAdd(entry: any) {
         this.personService.getLast().subscribe(result => {
             if (result.status === 'not_modified' || result.status === 'success') {
+              // @ts-ignore
                 this.dataSource.data.push(result.data);
                 this.table.renderRows();
                 console.log('Table should have rendered.');
